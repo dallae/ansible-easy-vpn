@@ -23,6 +23,19 @@ docker stop authelia wg-easy adguard-unbound-doh watchtower bunkerweb
 docker rm authelia wg-easy adguard-unbound-doh watchtower bunkerweb
 sudo rm -rf /opt/docker
 docker system prune -a
+
+# Stop all containers
+sudo docker stop $(sudo docker ps -aq)
+
+# Remove all containers
+sudo docker rm $(sudo docker ps -aq)
+
+# Remove all images
+sudo docker rmi -f $(sudo docker images -aq)
+
+# Purge everything including networks and volumes
+sudo docker system prune -a --volumes
+
 ```
 The configuration for unattended upgrades, SSH and the non-root user created by the playbook will remain in place.
 
