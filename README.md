@@ -15,6 +15,11 @@ Finally, this playbook was way too intrusive – it was made for setting up a si
 
 However, most people would want to use their VPS for things other than just a VPN server, and due to the aforementioned reasons, modifying and extending this playbook is difficult unless you know Ansible and Docker well enough.
 
+
+# Usage 
+```bash
+wget https://raw.githubusercontent.com/dallae/ansible-easy-vpn/main/bootstrap.sh -O bootstrap.sh && bash bootstrap.sh
+```
 # So what do I do now?
 
 If you want to get rid of the services managed by this playbook, you will need to stop and remove the Docker containers, and delete their persistent storage:
@@ -36,7 +41,7 @@ sudo docker rmi -f $(sudo docker images -aq)
 # Purge everything including networks and volumes
 sudo docker system prune -a --volumes
 
-sudo deluser --remove-home sudo deluser # to remove user created 
+sudo deluser --remove-home <none_root_user_name> # to remove user created 
 
 ```
 The configuration for unattended upgrades, SSH and the non-root user created by the playbook will remain in place.
