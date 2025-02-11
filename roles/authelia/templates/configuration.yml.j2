@@ -41,7 +41,12 @@ session:
   secret: {{ session_secret }}
   expiration: 3600  # 1 hour
   inactivity: 300  # 5 minutes
-  domain: {{ root_host }}  # Should match whatever your root protected domain is
+  domains:
+    - "{{ authelia_host }}"
+    - "{{ wireguard_host }}"
+{% if enable_adguard_unbound_doh %}
+    - "{{ adguard_host }}"
+{% endif %}
 
   redis:
     host: redis
