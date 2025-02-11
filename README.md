@@ -19,10 +19,10 @@ However, most people would want to use their VPS for things other than just a VP
 
 If you want to get rid of the services managed by this playbook, you will need to stop and remove the Docker containers, and delete their persistent storage:
 ```bash
-docker stop authelia wg-easy adguard-unbound-doh watchtower bunkerweb
-docker rm authelia wg-easy adguard-unbound-doh watchtower bunkerweb
+sudo docker stop authelia wg-easy adguard-unbound-doh watchtower bunkerweb
+sudo docker rm authelia wg-easy adguard-unbound-doh watchtower bunkerweb
 sudo rm -rf /opt/docker
-docker system prune -a
+sudo docker system prune -a
 
 # Stop all containers
 sudo docker stop $(sudo docker ps -aq)
