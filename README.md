@@ -36,6 +36,8 @@ sudo docker rmi -f $(sudo docker images -aq)
 # Purge everything including networks and volumes
 sudo docker system prune -a --volumes
 
+sudo deluser --remove-home sudo deluser # to remove user created 
+
 ```
 The configuration for unattended upgrades, SSH and the non-root user created by the playbook will remain in place.
 
