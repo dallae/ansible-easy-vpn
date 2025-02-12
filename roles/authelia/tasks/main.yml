@@ -51,8 +51,11 @@
     name: "authelia"
     image: "authelia/authelia:{{ authelia_version }}"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9091"]
-      start_period: 10s
+      test: ["CMD", "curl", "-f", "http://localhost:9091/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
     networks:
       - name: wg_network
         ipv4_address: 10.8.2.4
